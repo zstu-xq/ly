@@ -2,16 +2,18 @@ package com.leyou.item.controller;
 
 import com.leyou.common.pojo.PageResult;
 import com.leyou.item.bo.SpuBo;
+import com.leyou.item.pojo.Sku;
 import com.leyou.item.pojo.Spu;
+import com.leyou.item.pojo.SpuDetail;
 import com.leyou.item.service.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class GoodsController {
@@ -39,6 +41,15 @@ public class GoodsController {
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping("sku/list")
+    public ResponseEntity<List<Sku>> querySkuBySpuId(@RequestParam("id") Long id) {
+        List<Sku> skus = this.goodsService.querySkuBySpuId(id);
+        if (CollectionUtils.isEmpty(skus)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        return ResponseEntity.ok(skus);
+    }
+
     /**
      * 新增商品
      * @param spu
@@ -46,12 +57,28 @@ public class GoodsController {
      */
     @PostMapping
     public ResponseEntity<Void> saveGoods(@RequestBody SpuBo spu) {
-        try {
-            this.goodsService.save(spu);
-            return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        this.goodsService.save(spu);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+
+    }
+
+    /**
+     * 新增商品
+     * @param spu
+     * @return
+     */
+    @PutMapping
+    public ResponseEntity<Void> updateGoods(@RequestBody SpuBo spu) {
+        this.goodsService.update(spu);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/spu/detail/{id}")
+    public ResponseEntity<SpuDetail> querySpuDetailById(@PathVariable("id") Long id) {
+        SpuDetail detail = this.goodsService.querySpuDetailById(id);
+        if (detail == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        return ResponseEntity.ok(detail);
     }
 }
