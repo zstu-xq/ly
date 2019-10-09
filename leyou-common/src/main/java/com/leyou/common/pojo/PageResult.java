@@ -16,6 +16,12 @@ public class PageResult<T> {
     public PageResult() {
     }
 
+    public PageResult(Long total, Long totalPage, List<T> items) {
+        this.total = total;
+        this.totalPage = totalPage;
+        this.items = items;
+    }
+
     public Long getTotal() {
         return total;
     }

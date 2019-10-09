@@ -1,0 +1,23 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: goods-web
+  thymeleaf:
+    cache: false
+  rabbitmq:
+    host: 192.168.105
+    username: admin
+    password: admin
+    template:
+      exchange: LEYOU.ITEM.EXCHANGE
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+    registry-fetch-interval-seconds: 5
+  instance:
+
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 5

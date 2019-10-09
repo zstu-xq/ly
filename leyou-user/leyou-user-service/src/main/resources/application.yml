@@ -1,0 +1,25 @@
+server:
+  port:
+
+spring:
+  application:
+    name: user-service
+
+  datasource:
+    url: jdbc:mysql://192.168.100.205:3306/leyou
+    username: root
+    password: root
+  redis:
+    host: 192.168.100.205
+    password: root
+  rabbitmq:
+    host: 192.168.100.205
+    username: admin
+    password: admin
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:10086/eureka
+  instance:
+    lease-expiration-duration-in-seconds: 15
+    lease-renewal-interval-in-seconds: 5

@@ -64,4 +64,8 @@ public class BrandService {
             this.brandMapper.insertCategoryAndBrand(id, brand.getId());
         });
     }
+
+    public Brand queryBrandById(Long id) {
+        return this.brandMapper.selectByPrimaryKey(id);
+    }
 }

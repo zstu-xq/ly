@@ -36,11 +36,17 @@ public class BrandController {
 
     @PostMapping
     public ResponseEntity<Void> saveBrand(Brand brand, @RequestParam(value = "cids")List<Long> cids){
-
         brandService.saveBrand(brand, cids);
         return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
 
-
+    @GetMapping("{id}")
+    public ResponseEntity<Brand> queryBrandById(@PathVariable("id") Long id){
+        Brand brand = brandService.queryBrandById(id);
+        if(brand == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(brand);
     }
 
 }

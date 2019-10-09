@@ -6,29 +6,53 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="leyou-auth-common" />
+        <module name="leyou-auth-service" />
+        <module name="leyou-cart" />
         <module name="leyou-common" />
         <module name="leyou-getway" />
+        <module name="leyou-goods-web" />
         <module name="leyou-item-interface" />
         <module name="leyou-item-service" />
+        <module name="leyou-order" />
         <module name="leyou-registry" />
+        <module name="leyou-search" />
+        <module name="leyou-sms" />
         <module name="leyou-upload" />
+        <module name="leyou-user-interface" />
+        <module name="leyou-user-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="leyou-search (1)" target="1.8" />
       <module name="leyoucommon" target="1.8" />
+      <module name="ly-order" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="leyou" options="-parameters" />
+      <module name="leyou-auth" options="-parameters" />
+      <module name="leyou-auth-common" options="-parameters" />
+      <module name="leyou-auth-service" options="-parameters" />
+      <module name="leyou-cart" options="-parameters" />
       <module name="leyou-common" options="-parameters" />
       <module name="leyou-getway" options="-parameters" />
+      <module name="leyou-goods-web" options="-parameters" />
       <module name="leyou-item" options="-parameters" />
       <module name="leyou-item-interface" options="-parameters" />
       <module name="leyou-item-service" options="-parameters" />
+      <module name="leyou-order" options="-parameters" />
       <module name="leyou-registry" options="-parameters" />
+      <module name="leyou-search" options="-parameters" />
+      <module name="leyou-search (1)" options="-parameters" />
+      <module name="leyou-sms" options="-parameters" />
       <module name="leyou-upload" options="-parameters" />
+      <module name="leyou-user" options="-parameters" />
+      <module name="leyou-user-interface" options="-parameters" />
+      <module name="leyou-user-service" options="-parameters" />
       <module name="leyoucommon" options="-parameters" />
+      <module name="ly-order" options="-parameters" />
     </option>
   </component>
 </project>
